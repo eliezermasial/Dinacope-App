@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/eleve', [\App\Http\Controllers\EleveServiceController::class, 'obtenirEleve']);
