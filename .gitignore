@@ -16,3 +16,12 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+.gitignore
+.gitattributes
+artisan
+composer.lock
+composer.json
+package.json
+phpunit.xml
+vite.config.json
+.editorconfig
