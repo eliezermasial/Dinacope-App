@@ -12,12 +12,32 @@ class EleveServiceController extends Controller
         $data = [];
 
         $eleve->creatEleve($data);
+
+        return $eleve;
     }
 
-    public function obtenirEleve (EleveServiceInterface $eleve)
+    public function getEleve (EleveServiceInterface $eleve)
     {
-        $eleves = $eleve->obtenirEleve();
+        $eleve = $eleve->obtenirEleve(1);
 
-        return response()->json($eleves);
+        return $eleve;
+    }
+
+    public function editEleve (EleveServiceInterface $eleve)
+    {
+        $data = [];
+        $id = 1;
+
+        $eleve = $eleve->mettreAJourEleve ($id, $data);
+
+        return $eleve;
+    }
+
+
+    public function deleteEleve (EleveServiceInterface $eleve)
+    {
+        $id = 1;
+
+        $eleve = $eleve->supprimerEleve($id);
     }
 }

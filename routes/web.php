@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/eleve', [\App\Http\Controllers\EleveServiceController::class, 'obtenirEleve']);
+Route::get('/eleve', [\App\Http\Controllers\EleveServiceController::class, 'editEleve']);
