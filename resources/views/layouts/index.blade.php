@@ -163,7 +163,7 @@
           <div class="card">
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between">
-                <h4 class="card-title mb-3">Affichage agents</h4>
+                <h4 class="card-title mb-3">Display agents</h4>
               </div>
               <div class="table-responsive">
                 <table class="table">
@@ -171,7 +171,7 @@
                     <tr>
                       <td>
                         <div class="d-flex">
-                          <img class="img-sm rounded-circle mb-md-0 mr-2" src="images/faces/face30.png" alt="profile image">
+                          <img class="img-sm rounded-circle mb-md-0 mr-2" src="images/faces/tamba.jpg" alt="profile image">
                           <div>
                             <div> Antenne</div>
                             <div class="font-weight-bold mt-1">volkswagen</div>

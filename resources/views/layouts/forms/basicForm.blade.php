@@ -1,14 +1,14 @@
 @extends('master')
-@section('title', 'edit')
+@section('title', 'modifications ou creation')
 @section('content')
 <!-- partial form -->
 <div class="main-panel">        
 <div class="content-wrapper">
     <div class="row">
-    <div class="col-md-12 grid-margin stretch-card">
+    <div class="col-md-12 grid-margin p-2 stretch-card" style="background-color: #1b1b2971">
         <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">modifications</h4>
+        <div class="card-body" >
+            <h4 class="card-title">@yield('title')</h4>
             <p class="card-description">
             Basic form layout
             </p>
