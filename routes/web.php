@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.tables.ecole');
+    return view('layouts.index');
 });
 
 Route::get('/eleve', [\App\Http\Controllers\EleveServiceController::class, 'getEleve']);
