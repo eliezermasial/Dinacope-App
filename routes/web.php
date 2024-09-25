@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.index');
+    return view('welcom');
 });
 
-Route::get('/eleve', [\App\Http\Controllers\EleveServiceController::class, 'getEleve']);
+/*Route::get('/eleve', [\App\Http\Controllers\EleveServiceController::class, 'getEleve']);*/
+
+Route::prefix('dinacope')->name('dinacope.')->group(function () {
+    //Route::resource('/antenne',\App\Http\Controllers\EleveServiceController::class);
+    Route::get('/eleve', [\App\Http\Controllers\EleveServiceController::class, 'getEleve']);
+});

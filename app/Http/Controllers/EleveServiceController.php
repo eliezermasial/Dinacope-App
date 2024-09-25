@@ -7,6 +7,11 @@ use App\Contracts\EleveServiceInterface;
 
 class EleveServiceController extends Controller
 {
+    public function index ()
+    {
+        return view('layouts.index');
+    }
+
     public function executeEleve (EleveServiceInterface $eleve)
     {
         $data = [];
@@ -32,7 +37,6 @@ class EleveServiceController extends Controller
 
         return $eleve;
     }
-
 
     public function deleteEleve (EleveServiceInterface $eleve)
     {
