@@ -12,9 +12,10 @@
             <p class="card-description">
             Basic form layout
             </p>
-            <form class="forms-sample">
+            <form class="forms-sample" action="{{ route('dinacope.antenne.store', ['eleve'=>$eleve])}}">
+                @method($eleve->exists ? 'put' : 'post')
             <div class="form-group">
-                <label for="exampleInputUsername1">Username</label>
+                <label for="exampleInputUsername1">nom de l'eleve </label>
                 <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
             </div>
             <div class="form-group">

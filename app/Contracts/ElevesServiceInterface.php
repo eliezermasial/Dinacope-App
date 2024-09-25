@@ -1,7 +1,7 @@
 <?php
 namespace App\Contracts;
 
-interface EleveServiceInterface
+interface ElevesServiceInterface
 {
     public function creatEleve (array $data);
     

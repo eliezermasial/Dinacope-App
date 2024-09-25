@@ -14,8 +14,9 @@
           <div class="d-flex align-items-center justify-content-md-end">
             <div class="mb-3 mb-xl-0 pr-1">
                 <div class="dropdown">
-                  <a class="btn btn-success btn-sm  btn-icon-text text-white border mr-2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="typcn typcn-calendar-outline mr-2"></i> Add ecole
+                  <a class="btn btn-success btn-sm  btn-icon-text text-white border mr-2"
+                   href="{{ route('dinacope.antenne.create')}}" aria-haspopup="true" aria-expanded="false">
+                       Add ecole
                   </a>
                   
                 </div>
@@ -56,64 +57,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      1
-                    </td>
-                    <td>
-                      <a href="#">Herman Beck</a>
-                    </td>
-                    <td>
-                      $ 77.99
-                    </td>
-                    <td>
-                      May 15, 2015
-                    </td>
-                  </tr>
+                  @foreach ($eleves as $eleve)
                   
+                    <tr>
+                      <td>{{ $eleve->id }}</td>
+                      <td>
+                        <a class="nav-link" href="{{ route('dinacope.antenne.show', ['antenne' => $eleve->id]) }}">{{ $eleve->nom }}</a>
+                      </td>
+                      <td>
+                        $ 77.99
+                      </td>
+                      <td>
+                        May 15, 2015
+                      </td>
+                    </tr>
                   
-                  <tr>
-                    <td>
-                      4
-                    </td>
-                    <td>
-                      Peter Meggik
-                    </td>
-                    <td>
-                      $ 77.99
-                    </td>
-                    <td>
-                      May 15, 2015
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      5
-                    </td>
-                    <td>
-                      Edward
-                    </td>
-                    <td>
-                      $ 160.25
-                    </td>
-                    <td>
-                      May 03, 2015
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      6
-                    </td>
-                    <td>
-                      John Doe
-                    </td>
-                    <td>
-                      $ 123.21
-                    </td>
-                    <td>
-                      April 05, 2015
-                    </td>
-                  </tr>
+                    
+                  @endforeach
+
                 </tbody>
               </table>
             </div>
@@ -211,4 +172,5 @@
     @include('partials.footer')
     <!-- footer -->
   </div>
+  
 @endsection

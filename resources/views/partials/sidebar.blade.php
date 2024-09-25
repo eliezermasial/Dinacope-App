@@ -3,7 +3,7 @@
           <li class="nav-item">
             <div class="d-flex sidebar-profile">
               <div class="sidebar-profile-image">
-                <img src="images/faces/tamba.jpg" alt="image">
+                <img src="{{url('images/faces/tamba.jpg')}}" alt="image">
                 <span class="sidebar-status-indicator"></span>
               </div>
               <div class="sidebar-profile-name">
@@ -28,21 +28,21 @@
             <p class="sidebar-menu-title">Dash menu</p>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('dinacope.antenne.index')}}">
               <i class="typcn typcn-device-desktop menu-icon"></i>
               <span class="menu-title">Dashboard <span class="badge badge-primary ml-3">New</span></span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false" aria-controls="form-elements">
               <i class="typcn typcn-film menu-icon"></i>
               <span class="menu-title">Form elements</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('dinacope.antenne.create')}}">Form Enregistrement</a></li>
               </ul>
             </div>
           </li>
@@ -55,7 +55,7 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Basic table</a></li>
               </ul>
             </div>
           </li>

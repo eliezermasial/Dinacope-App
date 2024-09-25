@@ -2,9 +2,9 @@
 namespace App\Services;
 
 use App\Models\Eleve;
-use App\Contracts\EleveServiceInterface;
+use App\Contracts\ElevesServiceInterface;
 
-class ServiceEleve implements EleveServiceInterface
+class ServiceEleve implements ElevesServiceInterface
 {
     public function creatEleve (array $data)
     {
