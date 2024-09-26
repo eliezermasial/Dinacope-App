@@ -21,6 +21,6 @@ Route::get('/', function () {
 
 Route::prefix('dinacope')->name('dinacope.')->group(function () {
     //Route::get('/index', [\App\Http\Controllers\ElevesServiceController::class, 'index']);
-    Route::resource('/antenne', \App\Http\Controllers\ElevesServiceController::class);
+    Route::resource('/eleve', \App\Http\Controllers\ElevesServiceController::class);
 });
 

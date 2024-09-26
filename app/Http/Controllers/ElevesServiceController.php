@@ -14,29 +14,17 @@ class ElevesServiceController extends Controller
             'eleves'=> Eleve::orderBy('created_at', 'desc')->get()
         ]);
     }
-    public function create (/*ElevesServiceInterface $eleve*/)
+
+    public function create ()
     {
         $eleve = new Eleve();
-
-        /*$data = [];
-
-        $eleve->creatEleve($data);*/
 
         return view('layouts.forms.basicForm', [
             'eleve' => $eleve
         ]);
     }
 
-    public function show (Request $Request,$id)
-    {
-        $eleve = Eleve::findOrFail($id);
-
-        return view('layouts.tables.ecole', [
-            'eleve'=>$eleve
-        ]);
-    }
-
-    public function store(Request $request)
+    public function store(Request $request, ElevesServiceInterface $eleveService)
     {
         $validatedData = $request->validate([
             'nom' => 'required|string|max:255',
@@ -45,38 +33,48 @@ class ElevesServiceController extends Controller
             'date_naissance' => 'required|date',
         ]);
     
-        Eleve::create($validatedData);
+        $eleve = $eleveService->creatEleve($validatedData);
     
-        return redirect()->route('dinacope.antenne.index')->with('success', 'Élève créé avec succès.');
-    }
-    
-    public function edit ( $id)
-    {
-        /*$eleve = Eleve::findOrFail($id);
-        return view('layouts.forms.basicForm', ['eleve'=>$eleve]);*/
-    }
-    /*
-    public function getEleve (ElevesServiceInterface $eleve)
-    {
-        $eleve = $eleve->obtenirEleve(1);
-
-        return $eleve;
+        return redirect()->route('dinacope.eleve.index', [
+            'eleve'=>$eleve->id
+        ])->with('success', 'Élève créé avec succès.');
     }
 
-    public function edit (ElevesServiceInterface $eleve)
+    public function show ($id, ElevesServiceInterface $eleveService)
     {
-        $data = [];
-        $id = 1;
+        $eleve = $eleveService->obtenirEleve($id);
 
-        $eleve = $eleve->mettreAJourEleve ($id, $data);
-
-        return view('layouts.forms.basicForm');
+        return view('layouts.tables.ecole', [
+            'eleve'=>$eleve
+        ]);
     }
 
-    public function deleteEleve (ElevesServiceInterface $eleve)
-    {
-        $id = 1;
+    public function edit (Eleve $eleve)
+    {   
+        return view('layouts.forms.basicForm', ['eleve'=>$eleve]);
+    }
 
-        $eleve = $eleve->supprimerEleve($id);
-    }*/
+    public function update (Request $Request, $id, ElevesServiceInterface $eleveService)
+    {
+        $validatedData = $Request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'classe' => 'required|string|max:255',
+            'date_naissance' => 'required|date',
+        ]);
+
+        $eleve = $eleveService->mettreAJourEleve($id,$validatedData);
+
+        return redirect()->route('dinacope.eleve.index',[
+            'eleve'=>$eleve
+        ])->with('success', 'eleve modifié avec succé');
+    }
+
+    public function destroy (Eleve $eleve, ElevesServiceInterface $eleveService)
+    {
+        $eleve = $eleveService->supprimerEleve($eleve->id);
+        
+        return redirect()->route('dinacope.eleve.index')->with('success', 'eleve a été supprimé');
+    }
+
 }

@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','table ecole par ID')
+@section('title', $eleve->exists ? 'infos sur eleve'.' '.$eleve->nom : 'infos sur ecole')
 @section('content')
 <!-- partial -->
 <div class="main-panel">
@@ -28,46 +28,22 @@
               <table class="table table-bordered">
                 <thead class="table-info">
                   <tr>
-                    <th>
-                      Id
-                    <th>
-                      nombre de class
-                    </th>
-                    
-                    <th>
-                      nombre de professeur
-                    </th>
-                    <th>
-                      chef d'etablissement
-                    </th>
-                    <th>
-                      nombre d'eleve par année
-                    </th>
-                    <th>
-                      phone
-                    </th>
+                    <th>Id</th>
+                    <th>nombre de class</th>
+                    <th>nombre de professeur</th>
+                    <th>chef d'etablissement</th>
+                    <th>nombre d'eleve par année</th>
+                    <th>phone</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>
-                      
-                    </td>
-                    <td>
-                      
-                    </td>
-                    <td>
-                     
-                    </td>
-                    <td>
-                      
-                    </td>
-                    <td>
-                      
-                    </td>
-                    <td>
-                      
-                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>                       
                 </tbody>
               </table>
@@ -85,6 +61,9 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">list des eleves </h4>
+              @if (session('success'))
+                <h4 class="card-title card-description alert alert-success">{{session('success')}}</h4>
+              @endif
               <div class="table-responsive pt-3">
                 <table class="table table-bordered">
                   <thead class="table-info">
@@ -106,21 +85,23 @@
                       <td>{{ $eleve->prenom }}</td>
                       <td>{{ $eleve->classe}}</td>
                       <td>{{ $eleve->date_naissance}}</td>
-                      <td>                    
-
-                      </td>
-                      <td>
-                        
-                      </td>
+                      <td></td>
+                      <td></td>
                       <td>
                         <div class="template-demo">
-                          <a href="{{route('dinacope.antenne.edit', ['antenne'=>$eleve->id])}}"  class="btn btn-info btn-sm btn-rounded btn-fw">Edite</a>
-                          <a href="#"  class="btn btn-danger btn-sm btn-rounded btn-fw">Delete</a>
-                          
+                          <a href="{{route('dinacope.eleve.edit', ['eleve'=>$eleve->id])}}"
+                              class="btn btn-info btn-sm btn-rounded btn-fw">
+                              Edite
+                          </a>
+    
+                            <form action="{{route('dinacope.eleve.destroy', $eleve)}}" method="POST">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn btn-danger btn-sm btn-rounded btn-fw">delete</button>
+                            </form>
                         </div>
                       </td>
-                    </tr>
-                    
+                    </tr> 
                   </tbody>
                 </table>
               </div>

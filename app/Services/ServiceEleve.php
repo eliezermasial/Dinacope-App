@@ -9,16 +9,14 @@ class ServiceEleve implements ElevesServiceInterface
     public function creatEleve (array $data)
     {
         $eleve = Eleve::create($data);
-        $eleve->save();
-
-        return response()->json($eleve);
+        return $eleve;
     }
 
     public function obtenirEleve($id)
     {
-        $eleve = Eleve::findOrFail($id)->get();
+        $eleve = Eleve::findOrFail($id);
 
-        return response()->json($eleve);
+        return $eleve;
     }
 
     public function mettreAJourEleve (int $id, array $data)
@@ -26,14 +24,15 @@ class ServiceEleve implements ElevesServiceInterface
         $eleve = Eleve::findOrFail($id);
         $eleve -> update($data);
 
-        return response()->json($eleve);
+        return $eleve;
     }
 
     public function supprimerEleve(int $id)
     {
         $eleve = Eleve::findOrFail($id);
+        $eleve->delete();
         
-        dd( $eleve->delete());
+        return $eleve;
     }
 
 }

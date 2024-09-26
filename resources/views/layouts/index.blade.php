@@ -17,7 +17,7 @@
             <div class="mb-3 mb-xl-0 pr-1">
                 <div class="dropdown">
                   <a class="btn btn-success btn-sm  btn-icon-text text-white border mr-2"
-                   href="{{ route('dinacope.antenne.create')}}" aria-haspopup="true" aria-expanded="false">
+                   href="{{ route('dinacope.eleve.create')}}" aria-haspopup="true" aria-expanded="false">
                        Add ecole
                   </a>
                   
@@ -64,7 +64,7 @@
                     <tr>
                       <td>{{ $eleve->id }}</td>
                       <td>
-                        <a class="nav-link" href="{{ route('dinacope.antenne.show', ['antenne' => $eleve->id]) }}">{{ $eleve->nom }}</a>
+                        <a class="nav-link" href="{{ route('dinacope.eleve.show', ['eleve' => $eleve->id]) }}">{{ $eleve->nom }}</a>
                       </td>
                       <td>
                         $ 77.99

@@ -28,7 +28,7 @@
             <p class="sidebar-menu-title">Dash menu</p>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('dinacope.antenne.index')}}">
+            <a class="nav-link" href="{{ route('dinacope.eleve.index')}}">
               <i class="typcn typcn-device-desktop menu-icon"></i>
               <span class="menu-title">Dashboard <span class="badg badge-primary ml-3">New</span></span>
             </a>
@@ -42,7 +42,7 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="{{ route('dinacope.antenne.create')}}">Form Enregistrement</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('dinacope.eleve.create')}}">Form Enregistrement</a></li>
               </ul>
             </div>
           </li>

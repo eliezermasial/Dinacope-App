@@ -10,7 +10,7 @@
         <div class="card-body" >
             <h4 class="card-title">@yield('title')</h4>
 
-            <form class="forms-sample" method="POST" action="{{ route($eleve->exists ? 'dinacope.antenne.update' : 'dinacope.antenne.store', ['eleve'=>$eleve])}}">
+            <form class="forms-sample" method="POST" action="{{ route($eleve->exists ? 'dinacope.eleve.update' : 'dinacope.eleve.store', ['eleve'=>$eleve])}}">
                 @csrf
                 @method($eleve->exists ? 'PUT' : 'POST')
 
@@ -18,9 +18,9 @@
             @include('shared.input', ['class'=>'form-control', 'name'=>'prenom', 'label'=>'prenom', 'value'=>$eleve->prenom])
             @include('shared.input', ['class'=>'form-control', 'name'=>'classe', 'label'=>'classe', 'value'=>$eleve->classe])
             @include('shared.input', ['class'=>'form-control', 'type'=>'date', 'name'=>'date_naissance', 'label'=>'date_naissance', 'value'=>$eleve->date_naissance])
-         
 
             <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            
             </form>
         </div>
         <!--
