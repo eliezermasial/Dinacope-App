@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'modifications ou creation')
+@section('title', $eleve->exists ? "modifier un eleve" : "creer un eleve")
 @section('content')
 <!-- partial form -->
 <div class="main-panel">        
@@ -9,15 +9,21 @@
         <div class="card">
         <div class="card-body" >
             <h4 class="card-title">@yield('title')</h4>
-            <p class="card-description">
-            Basic form layout
-            </p>
-            <form class="forms-sample" action="{{ route('dinacope.antenne.store', ['eleve'=>$eleve])}}">
-                @method($eleve->exists ? 'put' : 'post')
-            <div class="form-group">
-                <label for="exampleInputUsername1">nom de l'eleve </label>
-                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
-            </div>
+
+            <form class="forms-sample" method="POST" action="{{ route($eleve->exists ? 'dinacope.antenne.update' : 'dinacope.antenne.store', ['eleve'=>$eleve])}}">
+                @csrf
+                @method($eleve->exists ? 'PUT' : 'POST')
+
+            @include('shared.input', ['class'=>'form-control', 'name'=>'nom', 'label'=>'nome', 'value'=>$eleve->nom])
+            @include('shared.input', ['class'=>'form-control', 'name'=>'prenom', 'label'=>'prenom', 'value'=>$eleve->prenom])
+            @include('shared.input', ['class'=>'form-control', 'name'=>'classe', 'label'=>'classe', 'value'=>$eleve->classe])
+            @include('shared.input', ['class'=>'form-control', 'type'=>'date', 'name'=>'date_naissance', 'label'=>'date_naissance', 'value'=>$eleve->date_naissance])
+         
+
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+        <!--
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
@@ -30,10 +36,7 @@
                 <label for="exampleInputConfirmPassword1">Confirm Password</label>
                 <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
             </div>
-
-            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-            </form>
-        </div>
+        -->
         </div>
     </div>
     </div>

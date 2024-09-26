@@ -7,9 +7,11 @@
       <div class="row mb-5">
         <div class="col-sm-6">
           <h3 class="mb-0 font-weight-bold">nom antenne</h3>
-          <h4 class="card-title card-description">@yield('title')</h4>
-        
+          @if(session('success'))
+            <h4 class="card-title card-description alert alert-success">{{ session('success') }}</h4>
+          @endif
         </div>
+        
         <div class="col-sm-6">
           <div class="d-flex align-items-center justify-content-md-end">
             <div class="mb-3 mb-xl-0 pr-1">

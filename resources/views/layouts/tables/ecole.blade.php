@@ -89,58 +89,32 @@
                 <table class="table table-bordered">
                   <thead class="table-info">
                     <tr>
-                      <th>
-                        Id
-                      <th>
-                        nom
-                      </th>
-                      <th>
-                        prenom
-                      </th>
-                      <th>
-                        date_naissance
-                      </th>
-                      <th>
-                        classe
-                      </th>
-                      
-                      <th>
-                        annee_scolaire
-                      </th>
-                      <th>
-                        agent
-                      </th>
-                      <th>
-                        Action
-                      </th>
+                      <th>Id</th>
+                      <th>nom</th>
+                      <th>prenom</th>
+                      <th>class</th>
+                      <th>date_naissance</th>
+                      <th>annee_scolaire</th>
+                      <th>agent</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody class="table table-dark">
                     <tr>
-                      <td>
-                        
-                      </td>
-                      <td>
-                        
-                      </td>
-                      <td>
-                       
-                      </td>
-                      <td>
-                        
-                      </td>
-                      <td>
-                        
-                      </td>
-                      <td>
-                        
+                      <td>{{$eleve->id}}</td>
+                      <td>{{ $eleve->nom }}</td>
+                      <td>{{ $eleve->prenom }}</td>
+                      <td>{{ $eleve->classe}}</td>
+                      <td>{{ $eleve->date_naissance}}</td>
+                      <td>                    
+
                       </td>
                       <td>
                         
                       </td>
                       <td>
                         <div class="template-demo">
-                          <a href="#"  class="btn btn-info btn-sm btn-rounded btn-fw">Edite</a>
+                          <a href="{{route('dinacope.antenne.edit', ['antenne'=>$eleve->id])}}"  class="btn btn-info btn-sm btn-rounded btn-fw">Edite</a>
                           <a href="#"  class="btn btn-danger btn-sm btn-rounded btn-fw">Delete</a>
                           
                         </div>

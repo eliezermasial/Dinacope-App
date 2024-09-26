@@ -27,11 +27,35 @@ class ElevesServiceController extends Controller
         ]);
     }
 
-    public function show (Request $Request)
+    public function show (Request $Request,$id)
     {
-        return view('layouts.tables.ecole');
+        $eleve = Eleve::findOrFail($id);
+
+        return view('layouts.tables.ecole', [
+            'eleve'=>$eleve
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'classe' => 'required|string|max:255',
+            'date_naissance' => 'required|date',
+        ]);
+    
+        Eleve::create($validatedData);
+    
+        return redirect()->route('dinacope.antenne.index')->with('success', 'Élève créé avec succès.');
     }
     
+    public function edit ( $id)
+    {
+        /*$eleve = Eleve::findOrFail($id);
+        return view('layouts.forms.basicForm', ['eleve'=>$eleve]);*/
+    }
+    /*
     public function getEleve (ElevesServiceInterface $eleve)
     {
         $eleve = $eleve->obtenirEleve(1);
@@ -54,5 +78,5 @@ class ElevesServiceController extends Controller
         $id = 1;
 
         $eleve = $eleve->supprimerEleve($id);
-    }
+    }*/
 }
