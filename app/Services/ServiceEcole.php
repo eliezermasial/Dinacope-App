@@ -6,41 +6,41 @@ use App\Contracts\EcoleServiceInterface;
 
 class ServiceEcole implements EcoleServiceInterface
 {
-    public function creetEcole(array $data)
+    public function creatEcole(array $data)
     {
-        $ecole = Ecole::create();
-        $ecole->save();
+        $ecole = Ecole::create($data);
 
-        return response()->json($ecole);
+        return $ecole;
     }
 
-    public function afficherEcoles()
+    /*public function afficherEcoles()
     {
         $ecoles = Ecole::orderBy('created_at', 'desc')->get();
 
         return response()->json($ecoles);
-    }
+    }*/
 
     public function obtenirEcole(int $id)
     {
-        $ecole = ecole::findOrFail($id)->get();
+        $ecole = ecole::findOrFail($id);
 
-        return response()->json($ecole);
+        return $ecole;
     }
 
     public function mettreAJourEcole(int $id, array $data)
     {
-        $ecole = Ecole::findOrFail($id)->get();
-        $ecole->update($data);
+        $ecole = Ecole::findOrFail($id);
+        $ecole -> update($data);
         
-        return response()->json($ecole);
+        return $ecole;
     }
 
     public function supprimerEcole(int $id)
     {
-        $ecole = Ecole::findOrFail($id)->get;
+        $ecole = Ecole::findOrFail($id);
+        $ecole->delete();
 
-        return dd($ecole->delete());
+        return $ecole;
     }
 
 }

@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', $eleve->exists ? "modifier un eleve" : "creer un eleve")
+@section('title', $ecole->exists ? 'modifier les informtaions sur ecole'.' '.$ecole->nom_ecole : "creer un ecole")
 @section('content')
 <!-- partial form -->
 <div class="main-panel">        
@@ -10,14 +10,13 @@
         <div class="card-body" >
             <h4 class="card-title">@yield('title')</h4>
 
-            <form class="forms-sample" method="POST" action="{{ route($eleve->exists ? 'dinacope.eleve.update' : 'dinacope.eleve.store', ['eleve'=>$eleve])}}">
+            <form class="forms-sample" method="POST" action="{{ route($ecole->exists ? 'dinacope.ecole.update' : 'dinacope.ecole.store', ['ecole'=>$ecole])}}">
                 @csrf
-                @method($eleve->exists ? 'PUT' : 'POST')
+                @method($ecole->exists ? 'PUT' : 'POST')
 
-            @include('shared.input', ['class'=>'form-control', 'name'=>'nom', 'label'=>'nome', 'value'=>$eleve->nom])
-            @include('shared.input', ['class'=>'form-control', 'name'=>'prenom', 'label'=>'prenom', 'value'=>$eleve->prenom])
-            @include('shared.input', ['class'=>'form-control', 'name'=>'classe', 'label'=>'classe', 'value'=>$eleve->classe])
-            @include('shared.input', ['class'=>'form-control', 'type'=>'date', 'name'=>'date_naissance', 'label'=>'date_naissance', 'value'=>$eleve->date_naissance])
+            @include('shared.input', ['class'=>'form-control', 'name'=>'nom_ecole', 'label'=>'nom_ecole', 'value'=>$ecole->nom_ecole])
+            @include('shared.input', ['class'=>'form-control', 'name'=>'adresse', 'label'=>'adresse', 'value'=>$ecole->adresse])
+            @include('shared.input', ['class'=>'form-control', 'name'=>'phone', 'label'=>'phone_', 'value'=>$ecole->phone])
 
             <button type="submit" class="btn btn-primary mr-2">Submit</button>
             

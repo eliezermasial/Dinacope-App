@@ -1,6 +1,5 @@
 @extends('master')
 @section('title', 'Acceuil Dinacope')
-
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper">
@@ -17,7 +16,7 @@
             <div class="mb-3 mb-xl-0 pr-1">
                 <div class="dropdown">
                   <a class="btn btn-success btn-sm  btn-icon-text text-white border mr-2"
-                   href="{{ route('dinacope.eleve.create')}}" aria-haspopup="true" aria-expanded="false">
+                   href="{{ route('dinacope.ecole.create')}}" aria-haspopup="true" aria-expanded="false">
                        Add ecole
                   </a>
                   
@@ -45,32 +44,38 @@
                 <thead>
                   <tr>
                     <th>
-                      #
+                      Identifiant d'ecole
                     </th>
                     <th>
-                      nom ecole
+                      nom d'ecole
                     </th>
                     <th>
-                      nombre d'eleves
+                      adress d'ecole
                     </th>
                     <th>
                       chef_etablissement
                     </th>
+                    <th>
+                      phone
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($eleves as $eleve)
+                  @foreach ($ecoles as $ecole)
                   
                     <tr>
-                      <td>{{ $eleve->id }}</td>
+                      <td>{{ $ecole->id }}</td>
                       <td>
-                        <a class="nav-link" href="{{ route('dinacope.eleve.show', ['eleve' => $eleve->id]) }}">{{ $eleve->nom }}</a>
+                        <a class="nav-link" href="{{ route('dinacope.ecole.show', ['ecole' => $ecole->id]) }}">{{ $ecole->nom_ecole }}</a>
                       </td>
                       <td>
-                        $ 77.99
+                        {{$ecole->adresse}}
                       </td>
                       <td>
-                        May 15, 2015
+                        {{$ecole->chef_etablissement_id}}
+                      </td>
+                      <td>
+                        {{$ecole->phone}}
                       </td>
                     </tr>
                   

@@ -17,10 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::prefix('dinacope')->name('dinacope.')->group(function () {
+Route::prefix('/dinacope')->name('dinacope.')->group(function () {
+    Route::resource('/ecole', \App\Http\Controllers\EcoleServiceController::class);
     //Route::get('/index', [\App\Http\Controllers\ElevesServiceController::class, 'index']);
-    Route::resource('/eleve', \App\Http\Controllers\ElevesServiceController::class);
+    //Route::resource('/eleve', \App\Http\Controllers\ElevesServiceController::class);
 });
 

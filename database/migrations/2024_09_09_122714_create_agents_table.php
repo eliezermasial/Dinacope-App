@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('post_nom')->nullable();
             $table->enum('role', ['agent', 'chef_antenne']);
-            $table->foreignId('antenne_id')->constrained('antennes')->onDelete('cascade');
+            $table->foreignId('antenne_id')->nullable()->constrained('antennes')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

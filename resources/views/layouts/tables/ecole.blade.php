@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', $eleve->exists ? 'infos sur eleve'.' '.$eleve->nom : 'infos sur ecole')
+@section('title', $ecole->exists ? 'infos sur ecole'.' '.$ecole->nom_ecole : 'infos sur ecole')
 @section('content')
 <!-- partial -->
 <div class="main-panel">
@@ -23,27 +23,40 @@
       <div class="col-lg-12 grid-margin stretch-card mt-5">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">infos sur ecole : nom d'ecole by ID</h4>
+            <h4 class="card-title">infos sur ecole : {{$ecole->nom_ecole}}</h4>
             <div class="table-responsive pt-3">
               <table class="table table-bordered">
                 <thead class="table-info">
                   <tr>
                     <th>Id</th>
-                    <th>nombre de class</th>
-                    <th>nombre de professeur</th>
-                    <th>chef d'etablissement</th>
-                    <th>nombre d'eleve par année</th>
-                    <th>phone</th>
+                    <th>Nom  d'ecole</th>
+                    <th>Adress d'ecole</th>
+                    <th>Chef d'etablissement</th>
+                    <th>Phone</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
+                    <td>{{$ecole->id}}</td>
+                    <td>{{$ecole->nom_ecole}}</td>
+                    <td>{{$ecole->adresse}}</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$ecole->phone}}</td>
+                    <td>
+                      <div class="template-demo">
+                        <a href="{{route('dinacope.ecole.edit', ['ecole'=>$ecole->id])}}"
+                            class="btn btn-info btn-sm btn-rounded btn-fw">
+                            Edite
+                        </a>
+  
+                          <form action="{{route('dinacope.ecole.destroy', $ecole)}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger btn-sm btn-rounded btn-fw">delete</button>
+                          </form>
+                      </div>
+                    </td>
                   </tr>                       
                 </tbody>
               </table>
@@ -80,21 +93,21 @@
                   </thead>
                   <tbody class="table table-dark">
                     <tr>
-                      <td>{{$eleve->id}}</td>
-                      <td>{{ $eleve->nom }}</td>
-                      <td>{{ $eleve->prenom }}</td>
-                      <td>{{ $eleve->classe}}</td>
-                      <td>{{ $eleve->date_naissance}}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td>
                         <div class="template-demo">
-                          <a href="{{route('dinacope.eleve.edit', ['eleve'=>$eleve->id])}}"
+                          <a href="{{route('dinacope.ecole.edit', ['ecole'=>$ecole->id])}}"
                               class="btn btn-info btn-sm btn-rounded btn-fw">
                               Edite
                           </a>
     
-                            <form action="{{route('dinacope.eleve.destroy', $eleve)}}" method="POST">
+                            <form action="{{route('dinacope.ecole.destroy', $ecole)}}" method="POST">
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger btn-sm btn-rounded btn-fw">delete</button>

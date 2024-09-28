@@ -11,7 +11,7 @@ class ElevesServiceController extends Controller
     public function index ()
     {
         return view('layouts.index', [
-            'eleves'=> Eleve::orderBy('created_at', 'desc')->get()
+            'eleves'=> Eleve::orderBy('created_at', 'asc')->get()
         ]);
     }
 
