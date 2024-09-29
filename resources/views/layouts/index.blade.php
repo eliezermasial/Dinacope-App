@@ -44,7 +44,7 @@
                 <thead>
                   <tr>
                     <th>
-                      Identifiant d'ecole
+                      Id ecole
                     </th>
                     <th>
                       nom d'ecole
