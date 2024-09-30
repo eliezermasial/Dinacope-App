@@ -40,7 +40,7 @@
         <div class="card">
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-dark">
+              <table class="table table-dark text-center">
                 <thead>
                   <tr>
                     <th>
@@ -66,13 +66,13 @@
                     <tr>
                       <td>{{ $ecole->id }}</td>
                       <td>
-                        <a class="nav-link" href="{{ route('dinacope.ecole.show', ['ecole' => $ecole->id]) }}">{{ $ecole->nom_ecole }}</a>
+                        <a class="nav-link  menu-title text-white "  aria-expanded="false" aria-controls="tables" href="{{ route('dinacope.ecole.show', ['ecole' => $ecole->id]) }}">{{ $ecole->nom_ecole }}</a>
                       </td>
                       <td>
                         {{$ecole->adresse}}
                       </td>
                       <td>
-                        {{$ecole->chef_etablissement_id}}
+                        {{$ecole->chefBattement->nom_chef}}
                       </td>
                       <td>
                         {{$ecole->phone}}

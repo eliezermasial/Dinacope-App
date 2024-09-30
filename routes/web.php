@@ -18,8 +18,10 @@ Route::get('/', function () {
 });
 
 Route::prefix('/dinacope')->name('dinacope.')->group(function () {
+    //Routes resources pour gerer les evenement lié à l'ecole
     Route::resource('/ecole', \App\Http\Controllers\EcoleServiceController::class);
-    // Routes imbriquées pour les élèves dans les écoles
+
+    //Routes resources pour gerer les evenement lié à aux eleves en partant de chaque ecole
     Route::resource('/ecole/{ecole}/eleve', \App\Http\Controllers\ElevesServiceController::class)->names([
         'index' => 'ecole.eleve.index',
         'create' => 'ecole.eleve.create',
@@ -29,7 +31,16 @@ Route::prefix('/dinacope')->name('dinacope.')->group(function () {
         'update' => 'ecole.eleve.update',
         'destroy' => 'ecole.eleve.destroy'
     ]);
-    //Route::get('/index', [\App\Http\Controllers\ElevesServiceController::class, 'index']);
-    //Route::resource('/eleve', \App\Http\Controllers\ElevesServiceController::class);
+
+    /*Route resources pour gerer le chef d'etablissement de chaque ecole
+    Route::resource('/ecole/{ecole}/eleve', \App\Http\Controllers\ChefServiceController::class)->names([
+        'index' => 'ecole.chef.index',
+        'create' => 'ecole.chef.create',
+        'store' => 'ecole.chef.story',
+        'show' => 'ecole.chef.show',
+        'edit' => 'ecole.chef.edit',
+        'update' => 'ecole.chef.update',
+        'destroy' => 'ecole.chef.destroy'
+    ]);*/
 });
 

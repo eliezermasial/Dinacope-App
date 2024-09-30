@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ecole;
 use Illuminate\Http\Request;
 use App\Contracts\ChefsEtablissementServiceInterface;
 
 class ChefServiceController extends Controller
 {
+   
+    /*
     public function executeChefEtablissement (ChefsEtablissementServiceInterface $chef)
     {
         $data = [];
@@ -40,4 +43,5 @@ class ChefServiceController extends Controller
 
         return $chef;
     }
+        */
 }

@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\hasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ecole extends Model
@@ -15,13 +15,12 @@ class Ecole extends Model
     protected $fillable = [
         'phone',
         'adresse',
-        'nom_ecole',
-        'chef_etablissement_id'
+        'nom_ecole'
     ];
 
-    protected function ChefsEtablissement (): BelongsTo
+    public function chefBattement (): HasOne
     {
-        return $this->belongsTo(ChefsEtablissement::class);
+        return $this->HasOne(ChefBattement::class, 'ecole_id');
     }
 
     public function eleves (): HasMany

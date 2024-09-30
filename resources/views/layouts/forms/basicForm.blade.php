@@ -16,11 +16,19 @@
             <form class="forms-sample" method="POST" action="{{ route($ecole->exists ? 'dinacope.ecole.update' : 'dinacope.ecole.store', ['ecole'=>$ecole]) }}">
               @csrf
               @method($ecole->exists ? 'PUT' : 'POST')
-
+              
               @include('shared.input', ['class'=>'form-control', 'name'=>'nom_ecole', 'label'=>'Nom de l\'école', 'value'=>$ecole->nom_ecole])
               @include('shared.input', ['class'=>'form-control', 'name'=>'adresse', 'label'=>'Adresse', 'value'=>$ecole->adresse])
               @include('shared.input', ['class'=>'form-control', 'name'=>'phone', 'label'=>'Téléphone', 'value'=>$ecole->phone])
 
+              <div>
+                <hr>
+              </div>
+
+              @include('shared.input', ['class'=>'form-control', 'name'=>'nom_chef', 'label'=>'nom du chef d\'etablissement', 'value'=>$chef->nom_chef])
+              @include('shared.input', ['class'=>'form-control', 'name'=>'prenom_chef', 'label'=>'prenom du chef', 'value'=>$chef->prenom_chef])
+              @include('shared.input', ['class'=>'form-control', 'type'=>'mail', 'name'=>'email_chef', 'label'=>'email du chef', 'value'=>$chef->email_chef])
+              
               <button type="submit" class="btn btn-primary mr-2">Soumettre</button>
             </form>
           </div>

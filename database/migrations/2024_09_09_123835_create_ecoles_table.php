@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('nom_ecole');
             $table->string('phone')->nullable();
-            $table->foreignId('chef_etablissement_id')->nullable()->constrained('chefs_etablissements')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -28,27 +28,37 @@
             <p class="sidebar-menu-title">Dash menu</p>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('dinacope.ecole.index')}}">
+            <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.index')
+                href="{{ route('dinacope.ecole.index')}}"
+              @else
+                href="{{ route('dinacope.ecole.index')}}"
+            @endif>
               <i class="typcn typcn-device-desktop menu-icon"></i>
               <span class="menu-title">Dashboard <span class="badg badge-primary ml-3">New</span></span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" data-toggle="collapse" @if (Route::currentRouteNAme() === 'dinacope.ecole.create')
+              href="{{ route('dinacope.ecole.create')}}"
+              @else
+              href="#"
+            @endif  aria-expanded="false" aria-controls="form-elements">
               <i class="typcn typcn-film menu-icon"></i>
               <span class="menu-title">Form elements</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="{{ route('dinacope.ecole.create')}}">Form Enregistrement</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Form Enregistrement</a></li>
               </ul>
             </div>
           </li>
     
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+            <a class="nav-link" data-toggle="collapse" @if (Route::currentRouteName()==='dinacope.ecole.show') 
+            href="{{ route('dinacope.ecole.show', ['ecole' => $ecole->id]) }}" @else href="#" @endif
+               aria-expanded="false" aria-controls="tables">
               <i class="typcn typcn-th-small-outline menu-icon"></i>
               <span class="menu-title">Tables</span>
               <i class="menu-arrow"></i>

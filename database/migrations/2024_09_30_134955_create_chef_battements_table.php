@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chefs_etablissements', function (Blueprint $table) {
+        Schema::create('chef_battements', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('phone');
-            $table->string('prenom');
-            $table->string('post_nom');
-            $table->string('email')->nullable();
+            $table->string('nom_chef');
+            $table->string('prenom_chef');
+            $table->string('email_chef')->nullable();
+            $table->foreignId('ecole_id')->constrained('ecoles')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chefs_etablissements');
+        Schema::dropIfExists('chef_battements');
     }
 };
