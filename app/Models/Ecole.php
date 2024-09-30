@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\hasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -24,8 +24,8 @@ class Ecole extends Model
         return $this->belongsTo(ChefsEtablissement::class);
     }
 
-    public function eleve (): HasOne
+    public function eleves (): HasMany
     {
-        return $this->hasOne(Eleve::class);
+        return $this->hasMany(Eleve::class);
     }
 }
