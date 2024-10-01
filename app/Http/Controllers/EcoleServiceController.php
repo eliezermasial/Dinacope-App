@@ -119,9 +119,8 @@ class EcoleServiceController extends Controller
     {
         
         try {
-
-            $ecole = $ecoleService->supprimerEcole($ecole->id);
-            $chef = $chefBattementService->supprimerChef($ecole->chefBattement->id);
+              $ecoleService->supprimerEcole($ecole->id);
+              $chefBattementService->supprimerChef($ecole->chefBattement->id);
             
             return redirect()->route('dinacope.ecole.index')->with('success', 'ecole a été supprimé');
 

@@ -39,37 +39,49 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" @if (Route::currentRouteNAme() === 'dinacope.ecole.create')
-              href="{{ route('dinacope.ecole.create')}}"
-              @else
-              href="#"
-            @endif  aria-expanded="false" aria-controls="form-elements">
-              <i class="typcn typcn-film menu-icon"></i>
-              <span class="menu-title">Form elements</span>
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="typcn typcn-user-add-outline menu-icon"></i>
+              <span class="menu-title"> Forms </span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="form-elements">
+            <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="#">Form Enregistrement</a></li>
-              </ul>
-            </div>
-          </li>
-    
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" @if (Route::currentRouteName()==='dinacope.ecole.show') 
-            href="{{ route('dinacope.ecole.show', ['ecole' => $ecole->id]) }}" @else href="#" @endif
-               aria-expanded="false" aria-controls="tables">
-              <i class="typcn typcn-th-small-outline menu-icon"></i>
-              <span class="menu-title">Tables</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#">Basic table</a></li>
+                <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.create') 
+                    href="{{ route('dinacope.ecole.create')}}"
+                    
+                  @elseif (Route::currentRouteName()==='dinacope.ecole.eleve.create')
+                    href="{{ route('dinacope.ecole.eleve.create', ['ecole'=> $ecole->id])}}"
+
+                  @else href="#" @endif> Form Creation </a></li>
+                <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.edit') 
+                  href="{{route('dinacope.ecole.edit', ['ecole'=>$ecole->id])}}"
+
+                  @elseif (Route::currentRouteName()==='dinacope.ecole.edit')
+
+                    {{route('dinacope.ecole.edit', ['ecole'=>$ecole->id])}}
+                  @else href="#" @endif> Form Edit </a></li>
               </ul>
             </div>
           </li>
 
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="typcn typcn-user-add-outline menu-icon"></i>
+              <span class="menu-title"> Tables </span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.show') 
+                  href="{{ route('dinacope.ecole.show', ['ecole' => $ecole->id]) }}" @else href="#" @endif> table ecole </a></li>
+                <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.eleve.index') 
+                  href="{{ route('dinacope.ecole.eleve.index', ['ecole' => $ecole->id]) }}" @else href="#" @endif> table eleve </a></li>
+              </ul>
+            </div>
+          </li>
+          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="typcn typcn-user-add-outline menu-icon"></i>
@@ -78,11 +90,13 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
               </ul>
             </div>
           </li>
+
+
 
           <li class="nav-item">
             <a class="nav-link" href="pages/documentation/documentation.html">

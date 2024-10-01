@@ -33,7 +33,6 @@
               @include('shared.input', ['class'=>'form-control', 'name'=>'nom_chef', 'label'=>'nom du chef d\'etablissement', 'value'=>$nomChefValue])
               @include('shared.input', ['class'=>'form-control', 'name'=>'prenom_chef', 'label'=>'prenom du chef', 'value' => $prenomChefValue])
               @include('shared.input', ['class'=>'form-control', 'type'=>'mail', 'name'=>'email_chef', 'label'=>'email du chef', 'value'=> $emailChefValue])
-              @include('shared.input', ['class'=>'form-control', 'type'=>'hidden','name'=>'nom_chef', 'label'=>'id', 'value'=>$idChefValue])
 
               <button type="submit" class="btn btn-primary mr-2">Soumettre</button>
             </form>
