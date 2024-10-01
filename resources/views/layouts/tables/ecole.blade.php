@@ -26,7 +26,7 @@
           <div class="card-body">
             <h4 class="card-title">infos sur ecole : {{$ecole->nom_ecole}}</h4>
             <div class="table-responsive pt-3">
-              <table class="table table-bordered">
+              <table class="table table-bordered text-center">
                 <thead class="table-info">
                   <tr>
                     <th>Id</th>
@@ -42,7 +42,7 @@
                     <td>{{$ecole->id}}</td>
                     <td>{{$ecole->nom_ecole}}</td>
                     <td>{{$ecole->adresse}}</td>
-                    <td></td>
+                    <td>{{$ecole->chefBattement->nom_chef}}</td>
                     <td>{{$ecole->phone}}</td>
                     <td>
                       <div class="template-demo">

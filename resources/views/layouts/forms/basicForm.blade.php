@@ -24,11 +24,17 @@
               <div>
                 <hr>
               </div>
+              @php
+                $nomChefValue = $ecole->exists ? $ecole->chefBattement->nom_chef : '';
+                $prenomChefValue = $ecole->exists ? $ecole->chefBattement->prenom_chef : '';
+                $emailChefValue = $ecole->exists ? $ecole->chefBattement->email_chef : '';
+                $idChefValue = $ecole->exists ? $ecole->chefBattement->id : '';
+              @endphp
+              @include('shared.input', ['class'=>'form-control', 'name'=>'nom_chef', 'label'=>'nom du chef d\'etablissement', 'value'=>$nomChefValue])
+              @include('shared.input', ['class'=>'form-control', 'name'=>'prenom_chef', 'label'=>'prenom du chef', 'value' => $prenomChefValue])
+              @include('shared.input', ['class'=>'form-control', 'type'=>'mail', 'name'=>'email_chef', 'label'=>'email du chef', 'value'=> $emailChefValue])
+              @include('shared.input', ['class'=>'form-control', 'type'=>'hidden','name'=>'nom_chef', 'label'=>'id', 'value'=>$idChefValue])
 
-              @include('shared.input', ['class'=>'form-control', 'name'=>'nom_chef', 'label'=>'nom du chef d\'etablissement', 'value'=>$chef->nom_chef])
-              @include('shared.input', ['class'=>'form-control', 'name'=>'prenom_chef', 'label'=>'prenom du chef', 'value'=>$chef->prenom_chef])
-              @include('shared.input', ['class'=>'form-control', 'type'=>'mail', 'name'=>'email_chef', 'label'=>'email du chef', 'value'=>$chef->email_chef])
-              
               <button type="submit" class="btn btn-primary mr-2">Soumettre</button>
             </form>
           </div>

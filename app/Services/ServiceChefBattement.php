@@ -22,8 +22,17 @@ class ServiceChefBattement implements ChefBattementServiceInterface
 
     public function mettreAJourChefBattement (int $id, array $data)
     {
-        $chef = ChefBattement::findOrFail($id, $data);
-        $chef->update();
+        
+        $chef = ChefBattement::findOrFail($id);
+        $chef->update($data);
+
+        return $chef;
+    }
+
+    public function supprimerChef (int $id)
+    {
+        $chef = ChefBattement::findOrFail($id);
+        $chef->delete();
 
         return $chef;
     }

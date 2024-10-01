@@ -28,8 +28,8 @@
               </a>
             </div>
             <div class="pr-1 mb-3 mb-xl-0">
-              <a class="btn btn-primary btn-sm btn-icon-text border" href="#">
-                <i class="typcn typcn-info-large-outline mr-2"></i>Add antenne
+              <a class="btn btn-primary btn-sm btn-icon-text border" href="{{route('dinacope.ecole.chef.index')}}">
+                <i class="typcn typcn-info-large-outline mr-2"></i>voir chef
               </a>
             </div>
           </div>
