@@ -15,7 +15,21 @@
     <link rel="stylesheet" href="{{ url('css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ url('images/favicon.png') }}">
+     <!-- Ajouter le CDN de SweetAlert2 dans ton <head> -->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
+  <style>
+    /* Pour centrer l'alerte */
+    .swal2-popup {
+        font-size: 1.6rem; /* Taille du texte */
+    }
+
+    /* Si nécessaire, ajouter des styles personnalisés pour mieux positionner */
+    .centered-popup {
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+  </style>
   <body>
     <!-- partial:partials/proBanner -->
     @include('partials.proBanner ')
@@ -62,5 +76,36 @@
     <!-- Custom js for this page-->
     <script src="{{('js/dashboard.js')}}"></script>
     <!-- End custom js for this page-->
+    <!-- script qui gere la suppression -->
+    <script type="text/javascript">
+      function confirmDelete() {
+        event.preventDefault();
+          Swal.fire({
+              title: 'Êtes-vous sûr ?',
+              text: "Voulez-vous vraiment effectuer cet action?",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Oui, supprimer !',
+              cancelButtonText: 'Annuler',
+              background: '#333', // Fond noir
+              color: '#fff', // Texte en blanc
+              backdrop: `
+                rgba(0,0,0,0.8) 
+                left top
+                no-repeat
+              `,
+              customClass: {
+                  popup: 'centered-popup'
+              }
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  // Si l'utlisateur confirme la suppression on summet la formulaire
+                  document.getElementById('deleteForm').submit();
+              }
+          });
+      }
+    </script>
   </body>
 </html>

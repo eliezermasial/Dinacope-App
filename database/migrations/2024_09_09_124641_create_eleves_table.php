@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('classe');
             $table->date('date_naissance');
-            $table->foreignId('ecole_id')->nullable()->constrained('ecoles')->onDelete('cascade');//nullable est temporaire
-            $table->foreignId('agent_id')->nullable()->constrained('agents')->onDelete('cascade');//nullable est temporaire
+            $table->foreignId('ecole_id')->constrained('ecoles')->onDelete('cascade');//nullable est temporaire
             $table->foreignId('annee_scolaire_id')->nullable()->constrained('annees_scolaires')->onDelete('cascade');//nullable est temporaire
             $table->timestamps();
             $table->softDeletes();

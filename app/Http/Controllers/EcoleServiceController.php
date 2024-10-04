@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ecole;
+use App\Models\AgentAntenne;
 use Illuminate\Http\Request;
 use App\Models\ChefBattement;
 use App\Contracts\EcoleServiceInterface;
@@ -12,8 +13,11 @@ class EcoleServiceController extends Controller
 {
     public function index ()
     {
+        $agents = AgentAntenne::all();
+
         return view('layouts.index', [
-            'ecoles'=> Ecole::with('chefBattement')->orderBy('created_at', 'asc')->get()
+            'ecoles'=> Ecole::with('chefBattement')->orderBy('created_at', 'asc')->get(),
+            'agents'=>$agents
         ]);
     }
 

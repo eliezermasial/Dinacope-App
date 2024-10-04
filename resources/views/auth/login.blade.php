@@ -31,15 +31,15 @@
               </div>
               <h4>connexion</h4>
               <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3">
-                <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+              <form class="pt-3" action="{{route('aut.login.dologin')}}" method="post">
+                @csrf
+                <input type="email" name="email" class="form-control form-control-lg" placeholder="votre mail" required>
+                <input type="password" name="password" class="form-control form-control-lg" placeholder="votre mot de passe" required>                
+                <div class="text-center mt-4 font-weight-light">
+                  Don't have an account? <a href="{{route('Auth.login.createCompte')}}" class="text-primary">Create</a>
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">connexion</button>
                 </div>
 
               </form>

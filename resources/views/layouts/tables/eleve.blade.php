@@ -60,11 +60,13 @@
                               class="btn btn-info btn-sm btn-rounded btn-fw">
                               Edite
                           </a>
-                          <form action="{{route('dinacope.ecole.eleve.destroy', ['ecole'=>$ecole, 'eleve'=>$eleve])}}" method="POST">
+                          <form id="deleteForm" onsubmit="confirmDelete()" action="{{route('dinacope.ecole.eleve.destroy', ['ecole'=>$ecole->id, 'eleve'=>$eleve->id])}}" method="POST">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger btn-sm btn-rounded btn-fw">delete</button>
+                            <button type="submit"  class="btn btn-danger btn-sm btn-rounded btn-fw">delete</button>
                           </form>
+                          
+                        
                         </div>
                       </td>
                     </tr> 

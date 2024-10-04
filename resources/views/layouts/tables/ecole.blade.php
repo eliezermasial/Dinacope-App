@@ -42,7 +42,7 @@
                     <td>{{$ecole->id}}</td>
                     <td>{{$ecole->nom_ecole}}</td>
                     <td>{{$ecole->adresse}}</td>
-                    <td>{{$ecole->chefBattement->nom_chef}}</td>
+                    <td>{{$ecole->chefBattement->nom_chef ?? 'pas de chef'}}</td>
                     <td>{{$ecole->phone}}</td>
                     <td>
                       <div class="template-demo">
@@ -55,7 +55,7 @@
                           voir les eleves
                       </a>
   
-                          <form action="{{route('dinacope.ecole.destroy', $ecole)}}" method="POST">
+                          <form id="deleteForm" onsubmit="confirmDelete()" action="{{route('dinacope.ecole.destroy', $ecole)}}" method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger btn-sm btn-rounded btn-fw">delete</button>

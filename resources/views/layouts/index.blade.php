@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="pr-1 mb-3 mr-2 mb-xl-0">
-              <a class="btn btn-secondary btn-sm btn-icon-text text-white border" href="#">
+              <a class="btn btn-secondary btn-sm btn-icon-text text-white border" href="{{route('dinacope.agent.create')}}">
                 <i class="typcn typcn-arrow-forward-outline mr-2"></i> Add agent
               </a>
             </div>
@@ -72,7 +72,7 @@
                         {{$ecole->adresse}}
                       </td>
                       <td>
-                        {{$ecole->chefBattement->nom_chef}}
+                       {{$ecole->chefBattement->nom_chef ?? 'pas de chef'}}
                       </td>
                       <td>
                         {{$ecole->phone}}
@@ -131,41 +131,60 @@
           <div class="card">
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between">
-                <h4 class="card-title mb-3">Display agents</h4>
+                <h4 class="card-title text-center mb-3">
+                  @if ($agents->isNotEmpty())
+                    Listes des agents
+                  @else
+                    Aucun agent enregistré
+                  @endif 
+                </h4>
               </div>
               <div class="table-responsive">
                 <table class="table">
                   <tbody>
+                    @foreach ($agents as $agent)
+                      
                     <tr>
-                      <td>
+                      <!--<td>
                         <div class="d-flex">
                           <img class="img-sm rounded-circle mb-md-0 mr-2" src="images/faces/tamba.jpg" alt="profile image">
                           <div>
-                            <div> Antenne</div>
-                            <div class="font-weight-bold mt-1">volkswagen</div>
+                            <div> Id</div>
+                            <div class="font-weight-bold mt-1"></div>
                           </div>
                         </div>
-                      </td>
+                      </td>-->
                       <td>
                         nom
-                        <div class="font-weight-bold  mt-1">tamba </div>
+                        <div class="font-weight-bold  mt-1">{{$agent->nom}}</div>
                       </td>
                       <td>
-                        pre nom
-                        <div class="font-weight-bold  mt-1">eliezer </div>
+                        prenom
+                        <div class="font-weight-bold  mt-1">{{$agent->prenom}}</div>
+                      </td>
+                      <td>
+                        nom d'antenne
+                        <div class="font-weight-bold  mt-1">{{$agent->nom_antenne}}</div>
                       </td>
                       <td>
                         role
-                        <div class="font-weight-bold text-success  mt-1">88% </div>
+                        <div class="font-weight-bold  mt-1">{{$agent->role}}</div>
+                        <!--<div class="font-weight-bold text-success  mt-1">88%</div>-->
                       </td>
                       <td>
                         phone
-                        <div class="font-weight-bold  mt-1">0820083703</div>
+                        <div class="font-weight-bold  mt-1">{{$agent->phone}}</div>
                       </td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-secondary">edit actions</button>
+                        <button type="button" class="btn btn-sm btn-secondary mb-2">edit agent</button>
+                        <form action="{{route('dinacope.agent.destroy',['agent'=>$agent->id])}}" method="POST">
+                          @csrf
+                          @method("delete")
+                          <button type="submit" class="btn btn-sm btn-danger">delete agent</button>
+                        </form>
                       </td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

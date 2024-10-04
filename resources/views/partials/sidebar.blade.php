@@ -49,17 +49,22 @@
                 <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.create') 
                     href="{{ route('dinacope.ecole.create')}}"
                     
-                  @elseif (Route::currentRouteName()==='dinacope.ecole.eleve.create')
-                    href="{{ route('dinacope.ecole.eleve.create', ['ecole'=> $ecole->id])}}"
-
-                  @else href="#" @endif> Form Creation </a></li>
+                  @elseif (Route::currentRouteName()==='dinacope.ecole.eleve.create' || Route::currentRouteName()==='dinacope.agent.create')
+                    
+                    @if (Route::currentRouteName()==='dinacope.ecole.eleve.create')
+                      href="{{ route('dinacope.ecole.eleve.create', ['ecole'=> $ecole->id])}}"
+                    @endif
+                      href="{{ route('dinacope.agent.create')}}"
+                  @else href="#" @endif> Form Creation </a>
+                </li>
                 <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.edit') 
                   href="{{route('dinacope.ecole.edit', ['ecole'=>$ecole->id])}}"
 
                   @elseif (Route::currentRouteName()==='dinacope.ecole.edit')
 
                     {{route('dinacope.ecole.edit', ['ecole'=>$ecole->id])}}
-                  @else href="#" @endif> Form Edit </a></li>
+                  @else href="#" @endif> Form Edit </a>
+                </li>
               </ul>
             </div>
           </li>
@@ -83,15 +88,23 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false" aria-controls="auth">
               <i class="typcn typcn-user-add-outline menu-icon"></i>
               <span class="menu-title">User connexion</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName() === 'Auth.login')
+                  href="{{route('Auth.login')}}"
+                @else
+                  href="#"
+                @endif> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='Auth.login.createCompte')
+                  href="{{route('Auth.login.createCompte')}}"
+                @else
+                  href="#"
+                @endif> Créer un compte </a></li>
               </ul>
             </div>
           </li>

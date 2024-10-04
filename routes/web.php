@@ -25,12 +25,18 @@ Route::prefix('/dinacope')->name('dinacope.')->group(function () {
     Route::resource('ecole/{ecole}/eleve', \App\Http\Controllers\ElevesServiceController::class)->names([
         'index' => 'ecole.eleve.index',
         'create' => 'ecole.eleve.create',
-        'store' => 'ecole.eleve.store',
+        
+       
+    'store' => 'ecole.eleve.store',
         'show' => 'ecole.eleve.show',
-        'edit' => 'ecole.eleve.edit',
+        
+       
+    'edit' => 'ecole.eleve.edit',
         'update' => 'ecole.eleve.update',
         'destroy' => 'ecole.eleve.destroy'
+
     ]);
+
 
     //Route resource pour gerer les fonctionnalités sur chef de battement
     Route::resource('ecole/chef', \App\Http\Controllers\ChefBattementServiceController::class)->names([
@@ -53,5 +59,15 @@ Route::prefix('/dinacope')->name('dinacope.')->group(function () {
         'update' => 'ecole.chef.update',
         'destroy' => 'ecole.chef.destroy'
     ]);*/
+});
+
+Route::get('/login', [\App\Http\Controllers\LoginUserController::class, 'login'])->name('Auth.login');
+Route::post('/login', [\App\Http\Controllers\LoginUserController::class, 'dologin'])->name('aut.login.dologin');
+Route::get('/login/create', [\App\Http\Controllers\LoginUserController::class, 'createCompte'])->name('Auth.login.createCompte');
+Route::post('/login/store', [\App\Http\Controllers\LoginUserController::class, 'store'])->name('Auth.login.store');
+Route::Delete('/login', [\App\Http\Controllers\LoginUserController::class, 'logout'])->name('Auth.login');
+
+Route::prefix('/dinacope')->name('dinacope.')->group(function() {
+    Route::resource('agent', \App\Http\Controllers\AgentServiceController::class)->names('agent');
 });
 

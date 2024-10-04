@@ -88,11 +88,14 @@ class ElevesServiceController extends Controller
         ])->with('success', 'eleve modifié avec succé');
     }
 
-    public function destroy (Eleve $eleve, ElevesServiceInterface $eleveService)
+    public function destroy(Ecole $ecole, Eleve $eleve, ElevesServiceInterface $eleveService)
     {
-        $eleve = $eleveService->supprimerEleve($eleve->id);
         
-        return redirect()->route('dinacope.ecole.eleve.index')->with('success', 'eleve a été supprimé');
+        $eleveService->supprimerEleve($eleve->id); // Utilisez directement l'ID de l'objet
+        
+        return redirect()->route('dinacope.ecole.eleve.index', ['ecole'=>$ecole->id])
+                     ->with('success', 'Élève a été supprimé avec succès.');
     }
+    
 
 }

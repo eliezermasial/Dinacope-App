@@ -21,11 +21,17 @@ class Eleve extends Model
         'annee_scolaire_id',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'id'; // Par défaut, Laravel utilise la clé primaire "id"
+    }
+
     protected function ecole (): BelongsTo
     {
         return $this->belongsTo(ecole::class);
     }
 
+    /*
     protected function agent (): BelongsTo
     {
         return $this->belongsTo(agent::class);
@@ -34,5 +40,5 @@ class Eleve extends Model
     protected function AnneesScolaire (): BelongsTo
     {
         return $this->belongsTo(AnneesScolaire::class);
-    }
+    }*/
 }

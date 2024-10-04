@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('agents', function (Blueprint $table) {
+        Schema::create('agent_antennes', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->string('phone');
+            $table->string('email')->unique();
             $table->string('prenom');
-            $table->string('post_nom')->nullable();
+            $table->string('password');
+            $table->string('nom_antenne');
+            $table->string('phone')->nullable();
             $table->enum('role', ['agent', 'chef_antenne']);
-            $table->foreignId('antenne_id')->nullable()->constrained('antennes')->onDelete('cascade');
             $table->timestamps();
+            $table->rememberToken();
             $table->softDeletes();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('agents');
+        Schema::dropIfExists('agent_antennes');
     }
 };
