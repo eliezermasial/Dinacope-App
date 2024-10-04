@@ -10,6 +10,12 @@ use App\Contracts\AgentServiceInterface;
 
 class AgentServiceController extends Controller
 {
+    public function index ()
+    {
+        $agentChefs = AgentAntenne::where('role', 'chef_antenne')->get();
+
+        return view('layouts.tables.chefs', ['agentchefs'=>$agentChefs]);
+    }
 
     public function create ()
     {
@@ -20,7 +26,7 @@ class AgentServiceController extends Controller
         ]);
     }
 
-    public function store (Request $Request)
+    public function store (Request $Request, AgentServiceInterface $agentService)
     {
         $validatedData = $Request->validate([
             'nom' => 'required|string|min:2',
@@ -32,7 +38,7 @@ class AgentServiceController extends Controller
             'role' => 'required|in:agent,chef_antenne' 
         ]);
 
-        $agents = AgentAntenne::create([
+        $agents = $agentService->creatAgent([
             'nom' => $validatedData['nom'],
             'email' => $validatedData['email'],
             'password' => hash::make($validatedData['password']),
@@ -42,7 +48,7 @@ class AgentServiceController extends Controller
             'role' => $validatedData['role']
         ]);
 
-        $agents = AgentAntenne::all();
+        $agents = AgentAntenne::all();//collection agents
 
         $ecoles = Ecole::with('chefBattement')->orderBy('created_at', 'asc')->get();
 
@@ -58,15 +64,13 @@ class AgentServiceController extends Controller
         return view('layouts.forms.basicForm');
     }
 
-    public function destroy (Request $Request)
+    public function destroy ($id, AgentServiceInterface $agentService)
     {
-        //on s'arrete ici
-        dd($Request->nom);
-        $agent = AgentAntenne::findOrFail($Request->id);
-        $agent->delete();
-
+        $agentService->supprimerAgent($id);
+        
         return redirect()->route('dinacope.ecole.index')->with('success', 'agent a été supprimé');
     }
+
     /*
     public function executeAgent (AgentServiceInterface $agent)
     {

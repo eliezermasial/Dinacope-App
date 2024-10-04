@@ -28,8 +28,8 @@
               </a>
             </div>
             <div class="pr-1 mb-3 mb-xl-0">
-              <a class="btn btn-primary btn-sm btn-icon-text border" href="{{route('dinacope.ecole.chef.index')}}">
-                <i class="typcn typcn-info-large-outline mr-2"></i>voir chef
+              <a class="btn btn-primary btn-sm btn-icon-text border" href="{{route('dinacope.agent.index')}}">
+                <i class="typcn typcn-info-large-outline mr-2"></i>voir agent chef
               </a>
             </div>
           </div>
@@ -176,12 +176,16 @@
                         <div class="font-weight-bold  mt-1">{{$agent->phone}}</div>
                       </td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-secondary mb-2">edit agent</button>
-                        <form action="{{route('dinacope.agent.destroy',['agent'=>$agent->id])}}" method="POST">
+                        <div class="d-block justify-content-center">
+                          <button type="button" class="btn btn-sm btn-secondary mb-1">editer</button>
+
+                          <form id="deleteForm" onsubmit="confirmDelete()" action="{{route('dinacope.agent.destroy',['agent'=>$agent->id])}}" method="POST">
                           @csrf
                           @method("delete")
-                          <button type="submit" class="btn btn-sm btn-danger">delete agent</button>
-                        </form>
+                          <button type="submit" class="btn btn-sm btn-danger">delete</button>
+                          </form>
+                        </div>
+                        
                       </td>
                     </tr>
                     @endforeach

@@ -33,15 +33,14 @@
               <h6 class="font-weight-light">Sign in to continue.</h6>
               <form class="pt-3" action="{{route('aut.login.dologin')}}" method="post">
                 @csrf
-                <input type="email" name="email" class="form-control form-control-lg" placeholder="votre mail" required>
-                <input type="password" name="password" class="form-control form-control-lg" placeholder="votre mot de passe" required>                
+                @include('shared.input', ['class'=>'form-control form-control-lg', 'name'=>'password', 'label'=>'votre mot de pass', 'placeholder'=>'*******', 'required'])
+                @include('shared.input', ['class'=>'form-control form-control-lg', 'name'=>'email', 'label'=>'votre email', 'placeholder'=>"elie...gmail.com", 'required'])                
                 <div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a href="{{route('Auth.login.createCompte')}}" class="text-primary">Create</a>
                 </div>
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">connexion</button>
                 </div>
-
               </form>
             </div>
           </div>

@@ -69,8 +69,6 @@
             </div>
           </li>
 
-          
-          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="typcn typcn-user-add-outline menu-icon"></i>
@@ -80,9 +78,14 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.show') 
-                  href="{{ route('dinacope.ecole.show', ['ecole' => $ecole->id]) }}" @else href="#" @endif> table ecole </a></li>
+                  href="{{ route('dinacope.ecole.show', ['ecole' => $ecole->id]) }}" @else href="#" @endif> table ecole </a>
+                </li>
                 <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.ecole.eleve.index') 
-                  href="{{ route('dinacope.ecole.eleve.index', ['ecole' => $ecole->id]) }}" @else href="#" @endif> table eleve </a></li>
+                  href="{{ route('dinacope.ecole.eleve.index', ['ecole' => $ecole->id]) }}" @else href="#" @endif> table eleve </a>
+                </li>
+                <li class="nav-item"> <a class="nav-link" @if (Route::currentRouteName()==='dinacope.agent.index') 
+                  href="{{ route('dinacope.agent.index') }}" @else href="#" @endif> table chefs d'antenne </a>
+                </li>
               </ul>
             </div>
           </li>

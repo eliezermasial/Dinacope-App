@@ -1,39 +1,41 @@
 <?php
 namespace App\Services;
 
-use App\Models\Agent;
+use App\Models\AgentAntenne;
 use App\Contracts\AgentServiceInterface;
 
-class ServiceEcole implements AgentServiceInterface
+class ServiceAgent implements AgentServiceInterface
 {
     public function creatAgent (array $data)
     {
-        $agent = Agent::create($data);
+        $agent = AgentAntenne::create($data);
 
-        return $agent->save();
+        return $agent;
     }
 
     public function obtenirAgent (int $id)
     {
-        $agent = Agent::findOrfail($id)->get;
+        $agent = AgentAntenne::findOrfail($id)->get;
 
         return response()->json($agent);
     }
 
-    public function mettreAJourEcole(int $id, array $data)
+    
+    public function mettreAJourAgent(int $id, array $data)
     {
-        $agent = Agent::findOrFail($id)->get;
+        $AgentAntenne = AgentAntenne::findOrFail($id)->get;
 
-        $agent->update($data);
+        $AgentAntenne->update($data);
 
-        return response()->json($agent);
+        return response()->json($AgentAntenne);
     }
 
-    public function supprimerEcole(int $id)
+    public function supprimerAgent(int $id)
     {
-        $agent = Agent::findOrFail($id)->get;
+        $agent = AgentAntenne::findOrFail($id);
+        $agent->delete();
 
-        return dd($agent->delete());
+        return $agent;
     }
 
 }
